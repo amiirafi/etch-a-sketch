@@ -16,6 +16,16 @@ function removeAllChild() {
   }
 }
 
+// function to generate random color
+function genRandomColor() {
+  let maxValue = 0xffffff;
+  let randomNumber = Math.random() * maxValue;
+  randomNumber = Math.floor(randomNumber);
+  randomNumber = randomNumber.toString(16);
+  let randomColor = randomNumber.padStart(6, 0);
+  return `#${randomColor.toUpperCase()}`;
+}
+
 const cellSize = document.querySelector(".size");
 cellSize.addEventListener("click", () => {
   input = parseInt(prompt("Choose size (Beetween 1-100): "));
@@ -39,7 +49,7 @@ function draw() {
     container.appendChild(cell);
 
     cell.addEventListener("mouseover", () => {
-      cell.style.backgroundColor = "black";
+      cell.style.backgroundColor = genRandomColor();
     });
 
     const clearCanvas = document.querySelector(".clear");
